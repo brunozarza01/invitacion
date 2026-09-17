@@ -1,0 +1,1450 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitación de Cumpleaños</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#0b1f3a;
+  --bg2:#123a63;
+  --bg3:#1d5b8f;
+  --card:rgba(255,255,255,.10);
+  --card-border:rgba(255,255,255,.28);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.72);
+  --accent:#75d3ff;
+  --accent2:#ffd04d;
+  --field:rgba(255,255,255,.14);
+  --field-border:rgba(255,255,255,.3);
+  --shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg1:#050f1e;
+    --bg2:#0b2745;
+    --bg3:#12436b;
+  }
+}
+
+:root[data-theme="dark"]{
+  --bg1:#050f1e;
+  --bg2:#0b2745;
+  --bg3:#12436b;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 15% -10%, var(--bg3), transparent 60%),
+    radial-gradient(1000px 600px at 90% 10%, #2a7fbf55, transparent 55%),
+    linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg1) 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+
+/* FOTO DE FONDO */
+.foto-fondo{
+  position:fixed;
+  inset:0;
+  background-image:none;
+  background-size:cover;
+  background-position:center;
+  opacity:.28;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* GLOBOS */
+.globos{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+
+.globo{
+  position:absolute;
+  bottom:-220px;
+  width:56px;
+  height:70px;
+  border-radius:50% 50% 48% 48%;
+  opacity:.55;
+  animation:subir linear infinite;
+  box-shadow:
+    inset -8px -10px 18px rgba(0,0,0,.18),
+    inset 8px 8px 14px rgba(255,255,255,.35);
+}
+
+.globo::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:100%;
+  width:1px;
+  height:70px;
+  background:rgba(255,255,255,.35);
+}
+
+@keyframes subir{
+  from{
+    transform:translateY(0) rotate(-6deg);
+  }
+  to{
+    transform:translateY(-130vh) rotate(6deg);
+  }
+}
+
+/* CONFETI */
+.confeti{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+
+.papel{
+  position:absolute;
+  top:-20px;
+  width:8px;
+  height:14px;
+  opacity:.75;
+  animation:caer linear infinite;
+}
+
+@keyframes caer{
+  from{
+    transform:translateY(-10vh) rotate(0deg);
+  }
+  to{
+    transform:translateY(115vh) rotate(720deg);
+  }
+}
+
+.wrap{
+  position:relative;
+  z-index:2;
+  max-width:640px;
+  margin:0 auto;
+  padding:40px 18px 60px;
+}
+
+.header{
+  text-align:center;
+  margin-bottom:26px;
+}
+
+.emojis{
+  font-size:2rem;
+  letter-spacing:.3em;
+  margin-bottom:8px;
+}
+
+h1{
+  font-family:"Fredoka","Fredoka One",system-ui,sans-serif;
+  font-weight:700;
+  font-size:clamp(2.2rem,8vw,3.4rem);
+  margin:0 0 6px;
+  line-height:1.05;
+  background:linear-gradient(120deg,#ffffff,var(--accent) 45%,var(--accent2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 2px 0 rgba(0,0,0,.08);
+}
+
+.sub{
+  color:var(--muted);
+  font-size:1.02rem;
+  margin:0;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:22px;
+  padding:24px;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+}
+
+.card + .card{
+  margin-top:18px;
+}
+
+.leyenda{
+  border-left:4px solid var(--accent2);
+  background:rgba(255,208,77,.12);
+  border-radius:14px;
+  padding:16px 18px;
+  font-size:1rem;
+  line-height:1.6;
+}
+
+.leyenda .titulo{
+  display:block;
+  font-family:"Fredoka",sans-serif;
+  font-weight:600;
+  color:var(--accent2);
+  margin-bottom:6px;
+  font-size:.95rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.Enlace-1{
+  color:white;
+  text-decoration:none;
+}
+
+label{
+  display:block;
+  font-weight:600;
+  margin:0 0 7px;
+  font-size:.95rem;
+}
+
+.campo{
+  margin-bottom:20px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select{
+  width:100%;
+  padding:13px 15px;
+  border-radius:13px;
+  border:1px solid var(--field-border);
+  background:var(--field);
+  color:var(--text);
+  font-family:inherit;
+  font-size:1rem;
+  outline:none;
+  transition:border-color .18s, box-shadow .18s, background .18s;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:rgba(255,255,255,.5);
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(117,211,255,.25);
+  background:rgba(255,255,255,.2);
+}
+
+textarea{
+  min-height:96px;
+  resize:vertical;
+}
+
+.opciones{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.opcion{
+  flex:1 1 140px;
+}
+
+.opcion input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.opcion span{
+  display:block;
+  text-align:center;
+  padding:14px 10px;
+  border-radius:14px;
+  border:1px solid var(--field-border);
+  background:var(--field);
+  cursor:pointer;
+  font-weight:600;
+  transition:all .18s;
+}
+
+.opcion input:checked + span{
+  background:linear-gradient(120deg,var(--accent),#3ea6e0);
+  border-color:transparent;
+  color:#04243b;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(117,211,255,.35);
+}
+
+.opcion input:focus-visible + span{
+  box-shadow:0 0 0 3px rgba(117,211,255,.45);
+}
+
+.subcaja{
+  background:rgba(0,0,0,.18);
+  border:1px solid var(--field-border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.hint{
+  margin:-2px 0 12px;
+  font-size:.84rem;
+  color:var(--muted);
+}
+
+.chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.chip{
+  flex:1 1 52px;
+  padding:11px 8px;
+  border-radius:12px;
+  cursor:pointer;
+  border:1px solid var(--field-border);
+  background:var(--field);
+  color:var(--text);
+  font-family:inherit;
+  font-weight:600;
+  font-size:1rem;
+  transition:all .18s;
+}
+
+.chip:hover{
+  background:rgba(255,255,255,.22);
+}
+
+.chip.activo{
+  background:linear-gradient(120deg,var(--accent),#3ea6e0);
+  border-color:transparent;
+  color:#04243b;
+  box-shadow:0 8px 18px rgba(117,211,255,.3);
+}
+
+.btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  font-family:"Fredoka",sans-serif;
+  font-size:1.15rem;
+  font-weight:600;
+  color:#04243b;
+  background:linear-gradient(120deg,var(--accent2),#ffb02e);
+  box-shadow:0 10px 26px rgba(255,176,46,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(255,176,46,.45);
+}
+
+.btn:active{
+  transform:translateY(0);
+}
+
+.btn.sec{
+  background:var(--field);
+  color:var(--text);
+  border:1px solid var(--field-border);
+  box-shadow:none;
+  margin-top:10px;
+  font-size:1rem;
+}
+
+.resultado{
+  display:none;
+}
+
+.resultado.visible{
+  display:block;
+  animation:aparecer .3s ease;
+}
+
+.resumen{
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--field-border);
+  border-radius:14px;
+  padding:16px;
+  margin:16px 0;
+  white-space:pre-wrap;
+  font-size:.96rem;
+  line-height:1.6;
+}
+
+.ok{
+  text-align:center;
+}
+
+.ok .tick{
+  font-size:3rem;
+  margin-bottom:6px;
+}
+
+.aviso{
+  font-size:.86rem;
+  color:var(--muted);
+  text-align:center;
+  margin-top:14px;
+  line-height:1.5;
+}
+
+.error{
+  color:#ffb3b3;
+  font-size:.86rem;
+  margin-top:-12px;
+  margin-bottom:14px;
+  display:none;
+}
+
+.error.visible{
+  display:block;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:.8rem;
+  margin-top:28px;
+}
+
+@keyframes aparecer{
+  from{
+    opacity:0;
+    transform:translateY(-6px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="foto-fondo"></div>
+<div class="globos" id="globos"></div>
+<div class="confeti" id="confeti"></div>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="emojis">🎈🎂🎉</div>
+    <h1>¡Estás invitado!</h1>
+    <p class="sub">Confirmame si te vas acá abajo gil 👇</p>
+  </div>
+
+  <div class="card">
+    <div class="leyenda">
+      <span class="titulo">Antes que nada 📢</span>
+
+      La comida y eso no te preocupes mi pana rabbit, eso lo pongo todo yo, bebidas si tenes que traer, o al llegar podes coordinar con alguien para ir a comprar, no se nomas donde, pero podes hacer eso. Trae ropa para la piscina por si hace calor, y por si pinta Piki o Volley, sabes luego. Ya pueden venir a partir de las 10:00 de la mañana. Te dejo la ubicación para que vayas viendo como ir, apretá en el nombre ->
+
+      <a class="Enlace-1"
+         href="https://maps.app.goo.gl/oox57WdwNFvaRqPj7"
+         target="_blank"
+         rel="noopener noreferrer">
+        Quinta Do Mangal
+      </a>
+    </div>
+  </div>
+
+  <div class="card" id="cardForm">
+
+    <div class="campo">
+      <label for="nombre">Nombre y apellido</label>
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Ej: Juan Pérez"
+        autocomplete="name"
+      >
+      <div class="error" id="errNombre">
+        Poné tu nombre y apellido 🙏
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>
+        Si o no nomas es la onda, ¿Venis o no?
+      </label>
+
+      <div class="opciones">
+
+        <label class="opcion">
+          <input type="radio" name="asiste" value="Sí">
+          <span>✅ Sí, voy</span>
+        </label>
+
+        <label class="opcion">
+          <input type="radio" name="asiste" value="No">
+          <span>❌ No puedo tengo fulbo</span>
+        </label>
+
+      </div>
+
+      <div class="error" id="errAsiste" style="margin-top:12px">
+        Elegí una opción 🙏
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>¿Le traes a alguien más?</label>
+
+      <div class="opciones">
+
+        <label class="opcion">
+          <input type="radio" name="acomp" value="si">
+          <span>👥 Sí</span>
+        </label>
+
+        <label class="opcion">
+          <input type="radio" name="acomp" value="no">
+          <span>🙋 Voy solo/a</span>
+        </label>
+
+      </div>
+    </div>
+
+    <div class="campo subcaja" id="boxCantidad">
+
+      <label for="cantidad">
+        ¿Con cuántas personas venís?
+      </label>
+
+      <p class="hint">
+        Si marcaste "Voy solo", no hace falta que selecciones un número,
+        pero si le traes a alguien -> SIN CONTARTE A VOS.
+        Marcá nomas el número, o podes escribir igual.
+      </p>
+
+      <div class="chips" id="chips">
+
+        <button type="button" class="chip" data-n="1">1</button>
+        <button type="button" class="chip" data-n="2">2</button>
+        <button type="button" class="chip" data-n="3">3</button>
+        <button type="button" class="chip" data-n="4">4</button>
+        <button type="button" class="chip" data-n="5">5+</button>
+
+      </div>
+
+      <input
+        type="number"
+        id="cantidad"
+        min="1"
+        max="20"
+        value="1"
+        inputmode="numeric"
+      >
+
+    </div>
+
+    <div class="campo">
+
+      <label for="sugerencia">
+        ¿Alguna sugerencia o algo??
+      </label>
+
+      <textarea
+        id="sugerencia"
+        placeholder="Música, juegos, algo que quieras proponer... (opcional)"
+      ></textarea>
+
+    </div>
+
+    <button type="button" class="btn" id="enviar">
+      Confirmar 🎉
+    </button>
+
+  </div>
+
+  <div class="card resultado" id="resultado">
+
+    <div class="ok">
+
+      <div class="tick">🎊</div>
+
+      <h2 style="font-family:Fredoka,sans-serif;margin:0 0 4px">
+        ¡Gracias por confirmar!
+      </h2>
+
+      <p class="sub" id="mensajeFinal">
+        Copiá tu respuesta y mandámela.
+      </p>
+
+    </div>
+
+    <div class="resumen" id="resumen"></div>
+
+    <button type="button" class="btn" id="copiar">
+      📋 Copiar respuesta
+    </button>
+
+    <button type="button" class="btn sec" id="whatsapp">
+      💬 Enviar por WhatsApp
+    </button>
+
+    <button type="button" class="btn sec" id="volver">
+      ✏️ Editar mi respuesta
+    </button>
+
+    <p class="aviso">
+      Mandale el mensaje al organizador así queda confirmado.
+    </p>
+
+  </div>
+
+  <div
+    class="card"
+    id="panelOrganizador"
+    style="margin-top:22px;display:none"
+  >
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+
+      <div>
+
+        <strong style="font-family:Fredoka,sans-serif">
+          Panel del organizador
+        </strong>
+
+        <p class="sub" style="margin:4px 0 0;font-size:.88rem">
+          Las confirmaciones se guardan directo en tu Google Sheet.
+          Este botón es solo un respaldo de lo confirmado en este navegador.
+        </p>
+
+      </div>
+
+      <button
+        type="button"
+        class="btn sec"
+        id="exportarExcel"
+        style="width:auto;margin-top:0;white-space:nowrap"
+      >
+        📊 Descargar Excel
+      </button>
+
+    </div>
+
+    <p class="aviso" id="exportEstado" style="margin-top:10px"></p>
+
+  </div>
+
+  <footer>
+    Nos vemos en la quinta kp, no te olvides de llevar tus buenas vibras y buena onda 🥳
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+(function(){
+
+  /* =========================================================
+     CONFIGURACIÓN
+  ========================================================= */
+
+  var GOOGLE_SHEET_URL =
+    "https://script.google.com/macros/s/AKfycby44IfnHzFItTRQZkJ4Q1qQbbZVs68vlTiaV517veu-UK3SlzI6XUEZYvfkGtj4AJcB/exec";
+
+
+  /* =========================================================
+     PANEL ADMIN
+  ========================================================= */
+
+  var params = new URLSearchParams(window.location.search);
+
+  if(params.get("admin") === "1"){
+    var panel = document.getElementById("panelOrganizador");
+
+    if(panel){
+      panel.style.display = "";
+    }
+  }
+
+
+  /* =========================================================
+     GLOBOS
+  ========================================================= */
+
+  var colores = [
+    "#75d3ff",
+    "#ffd04d",
+    "#ff7b8a",
+    "#8affc1",
+    "#c79bff",
+    "#ffffff"
+  ];
+
+  var g = document.getElementById("globos");
+
+  for(var i = 0; i < 14; i++){
+
+    var b = document.createElement("div");
+
+    b.className = "globo";
+
+    b.style.left = (Math.random() * 100) + "%";
+
+    b.style.background =
+      colores[i % colores.length];
+
+    b.style.animationDuration =
+      (14 + Math.random() * 14) + "s";
+
+    b.style.animationDelay =
+      (-Math.random() * 25) + "s";
+
+    var s = 0.7 + Math.random() * 0.8;
+
+    b.style.transformOrigin = "center bottom";
+
+    b.style.width = (56 * s) + "px";
+
+    b.style.height = (70 * s) + "px";
+
+    g.appendChild(b);
+  }
+
+
+  /* =========================================================
+     CONFETI
+  ========================================================= */
+
+  var c = document.getElementById("confeti");
+
+  for(var j = 0; j < 30; j++){
+
+    var p = document.createElement("div");
+
+    p.className = "papel";
+
+    p.style.left =
+      (Math.random() * 100) + "%";
+
+    p.style.background =
+      colores[j % colores.length];
+
+    p.style.animationDuration =
+      (5 + Math.random() * 7) + "s";
+
+    p.style.animationDelay =
+      (-Math.random() * 12) + "s";
+
+    if(Math.random() > 0.5){
+      p.style.borderRadius = "50%";
+    }
+
+    c.appendChild(p);
+  }
+
+
+  /* =========================================================
+     ELEMENTOS DEL FORMULARIO
+  ========================================================= */
+
+  var inputCantidad =
+    document.getElementById("cantidad");
+
+  var chips =
+    document.querySelectorAll(".chip");
+
+
+  /* =========================================================
+     BOTONES DE CANTIDAD
+  ========================================================= */
+
+  for(var i = 0; i < chips.length; i++){
+
+    chips[i].addEventListener("click", function(){
+
+      for(var j = 0; j < chips.length; j++){
+        chips[j].classList.remove("activo");
+      }
+
+      this.classList.add("activo");
+
+      /*
+        Si se toca 5+, ponemos 5 como mínimo.
+        Después el usuario puede escribir 6, 7, 8, etc.
+      */
+
+      inputCantidad.value = this.getAttribute("data-n");
+
+      var si =
+        document.querySelector(
+          'input[name="acomp"][value="si"]'
+        );
+
+      if(si){
+        si.checked = true;
+      }
+
+      inputCantidad.focus();
+    });
+
+  }
+
+
+  /* =========================================================
+     CUANDO SE ESCRIBE MANUALMENTE
+  ========================================================= */
+
+  inputCantidad.addEventListener("input", function(){
+
+    var valor = this.value;
+
+    for(var i = 0; i < chips.length; i++){
+
+      var chipValor =
+        chips[i].getAttribute("data-n");
+
+      /*
+        5+ se considera activo para cualquier número >= 5.
+      */
+
+      if(chipValor === "5"){
+        chips[i].classList.toggle(
+          "activo",
+          valor !== "" && parseInt(valor, 10) >= 5
+        );
+      }else{
+
+        chips[i].classList.toggle(
+          "activo",
+          chipValor === valor
+        );
+
+      }
+
+    }
+
+  });
+
+
+  /* =========================================================
+     OBTENER RADIO SELECCIONADO
+  ========================================================= */
+
+  function val(name){
+
+    var el =
+      document.querySelector(
+        'input[name="' + name + '"]:checked'
+      );
+
+    return el ? el.value : "";
+  }
+
+
+  /* =========================================================
+     MOSTRAR / OCULTAR ERRORES
+  ========================================================= */
+
+  function show(id, on){
+
+    var el =
+      document.getElementById(id);
+
+    if(el){
+      el.classList.toggle("visible", on);
+    }
+
+  }
+
+
+  /* =========================================================
+     TEXTO FINAL
+  ========================================================= */
+
+  var textoFinal = "";
+
+
+  /* =========================================================
+     CONFIRMAR
+  ========================================================= */
+
+  document
+    .getElementById("enviar")
+    .addEventListener("click", function(){
+
+      var nombre =
+        document.getElementById("nombre").value.trim();
+
+      var asiste =
+        val("asiste");
+
+      var acomp =
+        val("acomp");
+
+      var cantidad =
+        document.getElementById("cantidad").value;
+
+      var sug =
+        document.getElementById("sugerencia").value.trim();
+
+
+      /* -------------------------
+         VALIDACIONES
+      ------------------------- */
+
+      show("errNombre", !nombre);
+      show("errAsiste", !asiste);
+
+      if(!nombre || !asiste){
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+        return;
+      }
+
+
+      /* -------------------------
+         CANTIDAD
+      ------------------------- */
+
+      var numeroAcompanantes = 0;
+
+      if(asiste === "Sí" && acomp === "si"){
+
+        numeroAcompanantes =
+          parseInt(cantidad, 10);
+
+        if(
+          isNaN(numeroAcompanantes) ||
+          numeroAcompanantes < 1
+        ){
+
+          alert(
+            "Poné cuántas personas vienen con vos 🙏"
+          );
+
+          inputCantidad.focus();
+
+          return;
+        }
+
+        if(numeroAcompanantes > 20){
+
+          alert(
+            "El máximo es de 20 acompañantes."
+          );
+
+          inputCantidad.focus();
+
+          return;
+        }
+
+      }
+
+
+      /* -------------------------
+         ARMAR RESPUESTA
+      ------------------------- */
+
+      var lineas = [];
+
+      lineas.push(
+        "🎉 Gracias por confirmar +1000 de aura si te vas, y si no te vas -1000 de aura"
+      );
+
+      lineas.push("");
+
+      lineas.push(
+        "👤 Nombre: " + nombre
+      );
+
+      lineas.push(
+        "📌 ¿Asiste?: " + asiste
+      );
+
+
+      if(asiste === "Sí"){
+
+        if(acomp === "si"){
+
+          lineas.push(
+            "👥 Acompañantes: " +
+            numeroAcompanantes
+          );
+
+          lineas.push(
+            "🧮 Total de personas: " +
+            (numeroAcompanantes + 1)
+          );
+
+        }else{
+
+          lineas.push(
+            "👥 Acompañantes: ninguno (va solo/a)"
+          );
+
+        }
+
+      }
+
+
+      lineas.push(
+        "💡 Sugerencia: " +
+        (sug ? sug : "sin sugerencias")
+      );
+
+
+      textoFinal =
+        lineas.join("\n");
+
+
+      /* -------------------------
+         MOSTRAR RESULTADO
+      ------------------------- */
+
+      document.getElementById(
+        "resumen"
+      ).textContent = textoFinal;
+
+
+      document.getElementById(
+        "mensajeFinal"
+      ).textContent =
+        asiste === "Sí"
+          ? "No sé que más poner en la codificación, pero... QUE MANDAN CHAT"
+          : "Bueno kp, otra vez será 😭";
+
+
+      /* -------------------------
+         GUARDAR RESPUESTA LOCAL
+      ------------------------- */
+
+      var totalPersonas =
+        asiste === "Sí"
+          ? (
+              acomp === "si"
+                ? numeroAcompanantes + 1
+                : 1
+            )
+          : 0;
+
+
+      var respuesta = {
+
+        nombre: nombre,
+
+        asiste: asiste,
+
+        acompanantes:
+          (asiste === "Sí" && acomp === "si")
+            ? numeroAcompanantes
+            : 0,
+
+        totalPersonas:
+          totalPersonas,
+
+        sugerencia:
+          sug || "",
+
+        fecha:
+          new Date().toISOString()
+
+      };
+
+
+      try{
+
+        var previas =
+          JSON.parse(
+            localStorage.getItem(
+              "respuestas_cumple"
+            ) || "[]"
+          );
+
+        previas.push(respuesta);
+
+        localStorage.setItem(
+          "respuestas_cumple",
+          JSON.stringify(previas)
+        );
+
+      }catch(e){
+
+        console.log(
+          "No se pudo guardar en localStorage.",
+          e
+        );
+
+      }
+
+
+      /* =====================================================
+         GOOGLE SHEETS
+
+         IMPORTANTE:
+         El formulario NO depende de Google Sheets para avanzar.
+      ===================================================== */
+
+      if(
+        GOOGLE_SHEET_URL &&
+        GOOGLE_SHEET_URL.indexOf("http") === 0
+      ){
+
+        try{
+
+          fetch(
+            GOOGLE_SHEET_URL,
+            {
+              method:"POST",
+              mode:"no-cors",
+              headers:{
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+              },
+              body:JSON.stringify(respuesta)
+            }
+          ).catch(function(error){
+
+            console.log(
+              "No se pudo enviar a Google Sheets:",
+              error
+            );
+
+          });
+
+        }catch(error){
+
+          console.log(
+            "Error enviando a Google Sheets:",
+            error
+          );
+
+        }
+
+      }
+
+
+      /* =====================================================
+         MOSTRAR PANTALLA DE CONFIRMACIÓN
+      ===================================================== */
+
+      document.getElementById(
+        "cardForm"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "resultado"
+      ).classList.add("visible");
+
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    });
+
+
+  /* =========================================================
+     COPIAR
+  ========================================================= */
+
+  document
+    .getElementById("copiar")
+    .addEventListener("click", function(){
+
+      var btn = this;
+
+      function ok(){
+
+        btn.textContent =
+          "✅ ¡Copiado!";
+
+        setTimeout(function(){
+
+          btn.textContent =
+            "📋 Copiar respuesta";
+
+        }, 2000);
+
+      }
+
+
+      function fallback(){
+
+        var ta =
+          document.createElement("textarea");
+
+        ta.value = textoFinal;
+
+        document.body.appendChild(ta);
+
+        ta.select();
+
+        try{
+
+          document.execCommand("copy");
+
+          ok();
+
+        }catch(e){
+
+          alert(
+            "No se pudo copiar automáticamente. Copiá el texto manualmente."
+          );
+
+        }
+
+        document.body.removeChild(ta);
+
+      }
+
+
+      if(
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+      ){
+
+        navigator.clipboard
+          .writeText(textoFinal)
+          .then(ok)
+          .catch(fallback);
+
+      }else{
+
+        fallback();
+
+      }
+
+    });
+
+
+  /* =========================================================
+     WHATSAPP
+  ========================================================= */
+
+  document
+    .getElementById("whatsapp")
+    .addEventListener("click", function(){
+
+      var url =
+        "https://wa.me/?text=" +
+        encodeURIComponent(textoFinal);
+
+      window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+    });
+
+
+  /* =========================================================
+     VOLVER / EDITAR
+  ========================================================= */
+
+  document
+    .getElementById("volver")
+    .addEventListener("click", function(){
+
+      document
+        .getElementById("resultado")
+        .classList.remove("visible");
+
+      document
+        .getElementById("cardForm")
+        .style.display = "";
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    });
+
+
+  /* =========================================================
+     EXPORTAR EXCEL
+  ========================================================= */
+
+  document
+    .getElementById("exportarExcel")
+    .addEventListener("click", function(){
+
+      var estado =
+        document.getElementById(
+          "exportEstado"
+        );
+
+      var previas = [];
+
+
+      try{
+
+        previas =
+          JSON.parse(
+            localStorage.getItem(
+              "respuestas_cumple"
+            ) || "[]"
+          );
+
+      }catch(e){
+
+        previas = [];
+
+      }
+
+
+      if(previas.length === 0){
+
+        estado.textContent =
+          "Todavía no hay confirmaciones guardadas en este navegador.";
+
+        return;
+
+      }
+
+
+      var filas = [[
+        "Nombre y apellido",
+        "¿Asiste?",
+        "Acompañantes",
+        "Total de personas",
+        "Sugerencia",
+        "Fecha de confirmación"
+      ]];
+
+
+      for(var i = 0; i < previas.length; i++){
+
+        var r = previas[i];
+
+        filas.push([
+
+          r.nombre || "",
+
+          r.asiste || "",
+
+          r.acompanantes || 0,
+
+          r.totalPersonas || 0,
+
+          r.sugerencia || "",
+
+          r.fecha || ""
+
+        ]);
+
+      }
+
+
+      var ws =
+        XLSX.utils.aoa_to_sheet(filas);
+
+
+      ws["!cols"] = [
+        {wch:24},
+        {wch:10},
+        {wch:14},
+        {wch:16},
+        {wch:34},
+        {wch:22}
+      ];
+
+
+      var wb =
+        XLSX.utils.book_new();
+
+
+      XLSX.utils.book_append_sheet(
+        wb,
+        ws,
+        "Respuestas"
+      );
+
+
+      var wbout =
+        XLSX.write(
+          wb,
+          {
+            bookType:"xlsx",
+            type:"array"
+          }
+        );
+
+
+      var blob =
+        new Blob(
+          [wbout],
+          {
+            type:
+              "application/octet-stream"
+          }
+        );
+
+
+      var url =
+        URL.createObjectURL(blob);
+
+
+      var a =
+        document.createElement("a");
+
+      a.href = url;
+
+      a.download =
+        "respuestas_cumple.xlsx";
+
+      document.body.appendChild(a);
+
+      a.click();
+
+      document.body.removeChild(a);
+
+      URL.revokeObjectURL(url);
+
+
+      estado.textContent =
+        "¡Listo, se descargó el Excel!";
+
+    });
+
+
+})();
+</script>
+
+</body>
+</html>
+```
